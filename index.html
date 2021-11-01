@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="./styles.css">
+    <title>Which game should we play!?!?!?!</title>
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+            <h1 class="headerText">Which game should we play!?!?!?!</h1>
+            <h2 class="headerText">Super kewl board game finder</h2>
+        </header>
+        <main>
+            <div class="content">
+                <section class="mainSection">
+                    <div class="slidersFlex">
+                        <div id="ageSliderContainer" class="sliderContainer">
+                            <p>Age of youngest player: <span id="ageDisplay"></span></p>
+                            <input type="range" min="3.1" max="21.1" value="12.1" class="rangeInput" id="ageSliderInput">
+                        </div>
+                        <div id="playersSliderContainer" class="sliderContainer">
+                            <p>Number of players: <span id="playersDisplay"></span></p>
+                            <input type="range" min="1.1" max="12.1" value="4.1" class="rangeInput" id="playerSliderInput">
+                        </div>    
+                        <div id="minTimeSliderContainer" class="sliderContainer">
+                            <p>Minimum game time: <span id="minTimeDisplay"></span> minutes</p>
+                            <input type="range" min="14.9" max="299.9" value="29.9" step="15" class="rangeInput" id="minTimeSliderInput">
+                        </div>
+                        <div id="timeSliderContainer" class="sliderContainer">
+                            <p>Maximum game time: <span id="timeDisplay"></span> minutes</p>
+                            <input type="range" min="15.1" max="300.1" value="75.1" step="15" class="rangeInput" id="timeSliderInput">
+                        </div>
+                    </div>                    
+                    <div class="buttonDiv">
+                        <button class="formButton" type="submit">Find my games!</button>
+                    </div>
+                    <article class="searchResults hide">
+                        <h2 class="resultHeading hide">Here are some games you might like!</h2>
+                        <div class="resultAppend"></div>
+                    </article>
+                </section>
+                <aside class="randomSection">
+                    <div class="random">
+                        <div class="buttonDiv">
+                            <button type="submit" id="randomButton">Find a random game!</button>
+                        </div>
+                        <div class="randomAppend"></div>
+                        <ul class="mechanics"></ul>
+                    </div>
+                </aside>
+            </div>
+        </main>
+        <footer>
+            <p>Created by J Brodie Day at Juno College using the <a href="https://www.boardgameatlas.com/api/docs" target="_blank">Board Game Atlas API</a></p>
+        </footer>
+    </div>
+    <script src='https://code.jquery.com/jquery-3.4.0.min.js' integrity='sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg=' crossorigin='anonymous'></script>
+    <script src="./script.js"></script>
+</body>
+</html>
