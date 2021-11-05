@@ -8,32 +8,32 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet"> 
     <link rel="stylesheet" href="./styles.css">
-    <title>Which game should we play!?!?!?!</title>
+    <title>🎲 Which game should we play!?🎲</title>
 </head>
 <body>
     <div class="wrapper">
         <header>
-            <h1 class="headerText">Which game should we play!?!?!?!</h1>
-            <h2 class="headerText">Super kewl board game finder</h2>
+            <h1 class="headerText">Which game should we play!?</h1>
+            <h2 class="headerText">🎲 Super kewl board game finder 🎲</h2>
         </header>
         <main>
             <div class="content">
                 <section class="mainSection">
                     <div class="slidersFlex">
                         <div id="ageSliderContainer" class="sliderContainer">
-                            <p>Age of youngest player: <span id="ageDisplay"></span></p>
+                            <label for="ageSliderInput">Age of youngest player: <span id="ageDisplay"></span></label>
                             <input type="range" min="3.1" max="21.1" value="12.1" class="rangeInput" id="ageSliderInput">
                         </div>
                         <div id="playersSliderContainer" class="sliderContainer">
-                            <p>Number of players: <span id="playersDisplay"></span></p>
+                            <label for="playerSliderInput">Number of players: <span id="playersDisplay"></span></label>
                             <input type="range" min="1.1" max="12.1" value="4.1" class="rangeInput" id="playerSliderInput">
                         </div>    
                         <div id="minTimeSliderContainer" class="sliderContainer">
-                            <p>Minimum game time: <span id="minTimeDisplay"></span> minutes</p>
+                            <label for="minTimeSliderInput">Minimum game time: <span id="minTimeDisplay"></span> minutes</label>
                             <input type="range" min="14.9" max="299.9" value="29.9" step="15" class="rangeInput" id="minTimeSliderInput">
                         </div>
                         <div id="timeSliderContainer" class="sliderContainer">
-                            <p>Maximum game time: <span id="timeDisplay"></span> minutes</p>
+                            <label for="timeSliderInput">Maximum game time: <span id="timeDisplay"></span> minutes</label>
                             <input type="range" min="15.1" max="300.1" value="75.1" step="15" class="rangeInput" id="timeSliderInput">
                         </div>
                     </div>                    
@@ -57,7 +57,7 @@
             </div>
         </main>
         <footer>
-            <p>Created by J Brodie Day at Juno College using the <a href="https://www.boardgameatlas.com/api/docs" target="_blank">Board Game Atlas API</a></p>
+            <p>Created by <a href="https://brodieday.com">J Brodie Day</a> at Juno College using the <a href="https://www.boardgameatlas.com/api/docs" target="_blank">Board Game Atlas API</a></p>
         </footer>
     </div>
     <script src='https://code.jquery.com/jquery-3.4.0.min.js' integrity='sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg=' crossorigin='anonymous'></script>

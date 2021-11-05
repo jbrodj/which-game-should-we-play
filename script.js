@@ -33,6 +33,45 @@ ageSlider.oninput = function(event) { /* When slider is moved, update the value 
     ageDisplay.innerHTML= Math.floor(this.value);
 }
 
+// // User Inputs (The values passed to the query need to be above or below the user selection because there's no option for equal to+greater than in the API. So the values are offset by 0.1 on the range inputs to make the query inclusive of the value selected.)
+// const $playersSlider = $('#playerSliderInput'); /* Variable containing players input */
+// const playersDisplay = document.getElementById('playersDisplay'); /* Variable to display value of players input */
+// playersDisplay.innerHTML = Math.floor($playersSlider.value); /* Round the value to nearest integer for display */
+// // const $playersDisplay = $('#playersDisplay'); /* Variable to display value of players input */
+// console.log(playersDisplay)
+
+// // console.log($('#playersDisplay').innerHTML)
+// // console.log(Math.floor($playersSlider[0].value))
+
+// // $playersSlider.oninput = function() { /* When slider is moved, update the value the user sees*/
+// //     $playersDisplay.text = Math.floor(this[0].value);
+// // }
+// // console.log($playersDisplay)
+// // console.log($playersDisplay[0].id.text)
+// const $timeSlider = $('#timeSliderInput'); /* Variable containing the time input */
+// const $timeDisplay = $('#timeDisplay'); /* Variable to display the value of time input */
+// $timeDisplay.innerHTML = Math.floor($timeSlider[0].value);
+
+// $timeSlider.oninput = function() { /* When slider is moved, update the value the user sees*/
+//     $timeDisplay.innerHTML= Math.floor(this[0].value);
+// }
+// const $minTimeSlider = $('#minTimeSliderInput'); /* Variable containing the time input */
+// const $minTimeDisplay = $('#minTimeDisplay'); /* Variable to display the value of time input */
+// $minTimeDisplay.innerHTML = Math.ceil($minTimeSlider[0].value);
+
+// $minTimeSlider.oninput = function() { /* When slider is moved, update the value the user sees */
+//     $minTimeDisplay.innerHTML= Math.ceil(this[0].value);
+// }
+
+// const $ageSlider = $('#ageSliderInput'); /* Variable containing the time input */
+// const $ageDisplay = $('#ageDisplay'); /* Variable to display the value of time input */
+// $ageDisplay.innerHTML = Math.floor($ageSlider[0].value);
+
+// $ageSlider.oninput = function() { /* When slider is moved, update the value the user sees */
+//     $ageDisplay.innerHTML= Math.floor(this[0].value);
+// }
+
+
 // ajax call for the api
 app.gameFinder = function () {
     $.ajax({
@@ -50,7 +89,6 @@ app.gameFinder = function () {
             order_by: 'rank',
         }
     }).then(function(result) {
-
         const searchResult = result.games
         app.displayGame(searchResult) 
     })
@@ -65,7 +103,7 @@ app.displayGame = function(resultItems) {
     resultItems.forEach (function(item) {
 
         const resultHtml = `
-        <h3>${item.name} (${item.year_published})</h3>
+        <h3>🎲 ${item.name} (${item.year_published}) 🎲</h3>
         <ul>
             <li>Age ${item.min_age} and up</li>
             <li>${item.min_players} to ${item.max_players} players</li>
@@ -90,18 +128,6 @@ app.displayGame = function(resultItems) {
     }
 }
 
-$('.formButton').on('click', function(event) { /* runs gameFinder on button click */
-    event.preventDefault();
-    if (timeSlider.value < minTimeSlider.value) {
-        alert(`Oops! Maximum game time must be greater than minimum game time! :)`)
-        // return /* end the function if the if statment executes - prevents the app from running a queery with bad inputs */
-    }
-
-    $('.resultAppend').empty(); /* Clear the results section each time the form submits*/
-    app.gameFinder()
-})
-
-
 // Separate api function to run the random game generator
 app.gameRandom = function () {
     $.ajax({
@@ -115,16 +141,13 @@ app.gameRandom = function () {
         }
     }).then(function(result) {
         const randomResult = result.games
-        console.log('searchResult variable:', randomResult)
         app.displayRandomGame(randomResult)
     })
 }
 
 // function for displaying results of the random generator
 app.displayRandomGame = function(resultRandom) {
-    console.log('app.displayRandomGame:', resultRandom);
     resultRandom.forEach (function(item) {
-        console.log('each item:', item)
         const randomHtml = `
         <h3 class="randomGame">${item.name} (${item.year_published})</h3>
         <ul>
@@ -141,15 +164,32 @@ app.displayRandomGame = function(resultRandom) {
     })
 }
 
-// event listener for random button submit
-$('#randomButton').on('click', function(event) { /* run gameRandom when the random button is clicked */
-    console.log('random submitted')
-    event.preventDefault();
-    $('.randomAppend').empty();
-    app.gameRandom()
-})
-
 app.init = function () { /* initializer */
+
+    // Event listener for main form submit
+    $('.formButton').on('click', function(event) { /* runs gameFinder on button click */
+        event.preventDefault();
+        $('.resultAppend').empty(); /* Clear the results section each time the form submits*/
+
+        const minNum = parseInt(minTimeSlider.value)
+        const maxNum = parseInt(timeSlider.value) /* Convert time slider values to integers so they can be compared below */
+        console.log($playersSlider.value)
+        if (minNum > maxNum) {
+            $('.resultHeading').empty(); /* Clear the results heading if this error occurs*/
+            alert(`Oops! Maximum game time must be greater than minimum game time! :)`)
+
+            return /* end the function if the if statment executes - prevents the app from running a queery with bad inputs */
+        }
+
+        app.gameFinder()
+    })
+
+    // event listener for random button submit
+    $('#randomButton').on('click', function(event) { /* run gameRandom when the random button is clicked */
+        event.preventDefault();
+        $('.randomAppend').empty();
+        app.gameRandom()
+    })
 }
 
 $(function() {  /* document ready */
