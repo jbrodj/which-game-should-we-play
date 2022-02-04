@@ -6,7 +6,7 @@ const clientId = '4uDiIV1cKZ'
 const playersSlider = document.getElementById('playerSliderInput'); /* Variable containing players input */
 const playersDisplay = document.getElementById('playersDisplay'); /* Variable to display value of players input */
 playersDisplay.innerHTML = Math.floor(playersSlider.value); /* Round the value to nearest integer for display */
-
+ 
 playersSlider.oninput = function() { /* When slider is moved, update the value the user sees*/
     playersDisplay.innerHTML = Math.floor(this.value);
 }
@@ -32,45 +32,6 @@ ageDisplay.innerHTML = Math.floor(ageSlider.value);
 ageSlider.oninput = function(event) { /* When slider is moved, update the value the user sees */
     ageDisplay.innerHTML= Math.floor(this.value);
 }
-
-// // User Inputs (The values passed to the query need to be above or below the user selection because there's no option for equal to+greater than in the API. So the values are offset by 0.1 on the range inputs to make the query inclusive of the value selected.)
-// const $playersSlider = $('#playerSliderInput'); /* Variable containing players input */
-// const playersDisplay = document.getElementById('playersDisplay'); /* Variable to display value of players input */
-// playersDisplay.innerHTML = Math.floor($playersSlider.value); /* Round the value to nearest integer for display */
-// // const $playersDisplay = $('#playersDisplay'); /* Variable to display value of players input */
-// console.log(playersDisplay)
-
-// // console.log($('#playersDisplay').innerHTML)
-// // console.log(Math.floor($playersSlider[0].value))
-
-// // $playersSlider.oninput = function() { /* When slider is moved, update the value the user sees*/
-// //     $playersDisplay.text = Math.floor(this[0].value);
-// // }
-// // console.log($playersDisplay)
-// // console.log($playersDisplay[0].id.text)
-// const $timeSlider = $('#timeSliderInput'); /* Variable containing the time input */
-// const $timeDisplay = $('#timeDisplay'); /* Variable to display the value of time input */
-// $timeDisplay.innerHTML = Math.floor($timeSlider[0].value);
-
-// $timeSlider.oninput = function() { /* When slider is moved, update the value the user sees*/
-//     $timeDisplay.innerHTML= Math.floor(this[0].value);
-// }
-// const $minTimeSlider = $('#minTimeSliderInput'); /* Variable containing the time input */
-// const $minTimeDisplay = $('#minTimeDisplay'); /* Variable to display the value of time input */
-// $minTimeDisplay.innerHTML = Math.ceil($minTimeSlider[0].value);
-
-// $minTimeSlider.oninput = function() { /* When slider is moved, update the value the user sees */
-//     $minTimeDisplay.innerHTML= Math.ceil(this[0].value);
-// }
-
-// const $ageSlider = $('#ageSliderInput'); /* Variable containing the time input */
-// const $ageDisplay = $('#ageDisplay'); /* Variable to display the value of time input */
-// $ageDisplay.innerHTML = Math.floor($ageSlider[0].value);
-
-// $ageSlider.oninput = function() { /* When slider is moved, update the value the user sees */
-//     $ageDisplay.innerHTML= Math.floor(this[0].value);
-// }
-
 
 // ajax call for the api
 app.gameFinder = function () {
@@ -173,7 +134,6 @@ app.init = function () { /* initializer */
 
         const minNum = parseInt(minTimeSlider.value)
         const maxNum = parseInt(timeSlider.value) /* Convert time slider values to integers so they can be compared below */
-        console.log($playersSlider.value)
         if (minNum > maxNum) {
             $('.resultHeading').empty(); /* Clear the results heading if this error occurs*/
             alert(`Oops! Maximum game time must be greater than minimum game time! :)`)
